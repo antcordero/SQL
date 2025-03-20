@@ -1,5 +1,4 @@
 <h2>Temario</h2>
-<h3>Temas 3 - SQL</h3>
 <br>
 <p><strong>Consultas</strong></p>
 <ul>
@@ -18,4 +17,9 @@
   <li>Teoría</li>
   <li>Relación de ejercicios 1 a 7</li>
   <li>Exámen <em>--/01/2025</em></li>
+</ul>
+<p><strong>Administración SQL <em>Usuarios/Permisos</em></strong></p>
+<ul>
+  <li>Teoría</li>
+  <li>Relación de ejercicios 1 a ?</li>
 </ul>
