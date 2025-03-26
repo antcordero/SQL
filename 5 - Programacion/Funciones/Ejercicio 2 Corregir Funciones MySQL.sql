@@ -6,6 +6,7 @@
 delimiter
 create function `ejercicio7`(nom varchar(15), apellido varchar(15)) returns varchar(50) DETERMINISTIC
 begin
+/*Error -> Solución: varchar con más caracteres*/
 declare resultado varchar(20);
 
 set resultado=concat("Bienvenido ", nom, " ", apellido,"!!");
@@ -16,6 +17,7 @@ end
 
 select ejercicio7("jon", "zamora");
 
+
 /*
 	Ejercicio 2.- 
 */
@@ -25,18 +27,23 @@ delimiter //
 create funtion `ejercicio1`(num1 int, operacion varchar(15)) returns VARCHAR(20) NO SQL
 begin
 
+/*Error -> Solución: falta declarar el num2*/
+
+/*Error -> Solución: resultado sin declarar como decimal*/
+
 if operacion="suma" then
 	set resultado=num1+num2;
 elseif operacion="resta" then
 	set resultado=num1-num2;
 elseif operacion="division" then
+	/*Error -> Solución: div redondea, mejor con /*/
 	set resultado=num1 div num2;
 elseif operacion="multiplicacion" then
 	set resultado=num1*num2;
 end if;
 return resultado;
-/*Error -> Solución: end// (sin espacio)*/
 end //
+
 
 /*
 	Ejercicio 3.- 
@@ -51,12 +58,14 @@ resultado=power(num1, 2);
 return resultado;
 end //
 
+
 /*
 	Ejercicio 4.-
 */
 delimiter //
 create function `ejercicio3`(num1 int, operacion varchar(10)) returns int NO SQL
 begin
+/*Error -> Solución: es declare no set en este momento*/
 set resultado int /*Error -> Solución: falta ;*/
 
 if operacion="potencia" /*Error -> Solución: falta el then*/
@@ -66,7 +75,6 @@ elseif operacion="raiz" /*Error -> Solución: falta el then*/
 end if;
     
 return resultado;
-/*Error -> Solución: end// (sin espacio)*/
 end //
 
 
@@ -81,17 +89,19 @@ begin
 declare resultado int(15);
 declare aleatorio int;
 
-set aleatorio=random()*(10-1)+1;
+set aleatorio=random()*(10-1)+1; /*Error -> Solución: es rand no random*/
 
 if aleatorio=num1 then
 	set resultado="Has acertado"
-else if aleatorio distinct num1  then
+else if aleatorio distinct num1  then /*Error -> Solución: elseif va junto*/
 	set resultado="Has fallado"
 end if;
 
 return resultado
-/*Error -> Solución: end// (sin espacio)*/
+/*Error -> Solución: end//*/
 end
+
+
 
 /*
 	Ejercicio 6.-
@@ -117,5 +127,4 @@ elseif resto<>0 then
 end if;
 
 return resultado;
-/*Error -> Solución: end// (sin espacio)*/
 end //
