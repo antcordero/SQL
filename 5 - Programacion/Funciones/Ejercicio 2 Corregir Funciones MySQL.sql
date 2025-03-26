@@ -84,9 +84,9 @@ end //
 
 /*Error -> Solución: delimiter // (faltan las barras)*/
 delimiter
-function `ejercicio6`(num1 int) returns int(15) NO SQL /*Error -> Solución: falta create function*/
+function `ejercicio6`(num1 int) returns int(15) NO SQL /*Error -> Solución: falta create function y el return varchar*/
 begin
-declare resultado int(15);
+declare resultado int(15); /*Error -> Solución: resultado debe ser varchar*/
 declare aleatorio int;
 
 set aleatorio=random()*(10-1)+1; /*Error -> Solución: es rand no random*/
@@ -110,7 +110,7 @@ end
 delimiter //
 create function `ejercicio5`() returns varchar(50) DETERMINISTIC
 
-/*Error -> Solución: faltan los declare*/
+/*Error -> Solución: faltan el begin y los declare*/
 resultado varchar(20);
 numero int;
 Resto int;
@@ -118,7 +118,7 @@ Resto int;
 /*Error -> Solución: faltan el set*/
 numero=30;
 
-set resto=mod(numero, num1);
+set resto=mod(numero, num1); /*mod también puede ser % como en java*/
 
 if resto=0 then
 	set resultado=concat("el numero es divisible por ", num1);
