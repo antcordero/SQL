@@ -108,10 +108,10 @@ end
 */
 
 delimiter //
-create function `ejercicio5`() returns varchar(50) DETERMINISTIC
+create function `ejercicio5`() returns varchar(50) DETERMINISTIC /*falta num1 por parámetros*/
 
 /*Error -> Solución: faltan el begin y los declare*/
-resultado varchar(20);
+resultado varchar(20); /*varchar a 50*/
 numero int;
 Resto int;
 
