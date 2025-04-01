@@ -93,7 +93,15 @@ Ejercicio 4.- Realiza una función que calcule la potencia de un número.
 */
 
 delimiter //
-create function Ejercicio4(num1 int, num2 int) return varchar 
+create function Ejercicio4(x int, y int) returns varchar(255) no sql 
+begin
+declare potencia int;
+declare resultado varchar(255);
 
+set potencia = power(x,y);
+set resultado = concat("El número ", x ," elevado a ", y ," es igual a ", potencia);
+
+return resultado;
 end//
 
+select Ejercicio4(2,4);

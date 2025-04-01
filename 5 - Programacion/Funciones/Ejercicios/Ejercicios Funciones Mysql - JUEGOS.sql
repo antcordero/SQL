@@ -59,17 +59,29 @@ begin
 
 declare resultado varchar(255);
 declare opcionFuncion int;
+declare diferenciaJugador int;
+declare diferenciaPC int;
 
 set opcionFuncion = rand()*(100-0)+0;
+set diferenciaJugador = opcionFuncion - opcionJugador;
+set diferenciaPC = opcionFuncion - opcionPc;
 
-if opcionFuncion = opcionJugador and opcionFuncion = opcionPC then
-	set resultado = concat("Número insertado por el usuario: ", opcionJugador, " Número generado por la máquina: ", opcionPC, " Número generado por la función: ", opcionFuncion, " -> Ambos jugadores empatan");
-elseif opcionFuncion = opcionJugador then
+/*si la diferencia es negativa pasarla a positiva*/
+if diferenciaJugador < 0 then
+	set diferenciaJugador = diferenciaJugador * (-1);
+end if;
+
+if diferenciaPC < 0 then
+	set diferenciaPC = diferenciaPC * (-1);
+end if;
+
+/*Comparación de diferencias*/
+if diferenciaJugador < diferenciaPC then
 	set resultado = concat("Número insertado por el usuario: ", opcionJugador, " Número generado por la máquina: ", opcionPC, " Número generado por la función: ", opcionFuncion, " -> El usuario gana");
-elseif opcionFuncion = opcionPC then
+elseif diferenciaJugador > diferenciaPC then
 	set resultado = concat("Número insertado por el usuario: ", opcionJugador, " Número generado por la máquina: ", opcionPC, " Número generado por la función: ", opcionFuncion, " -> La máquina gana");
-else 
-	set resultado = concat("Número insertado por el usuario: ", opcionJugador, " Número generado por la máquina: ", opcionPC, " Número generado por la función: ", opcionFuncion, " -> Nadie gana");
+else
+	set resultado = concat("Número insertado por el usuario: ", opcionJugador, " Número generado por la máquina: ", opcionPC, " Número generado por la función: ", opcionFuncion, " -> Ambos jugadores empatan");
 end if;
 
 return resultado;
