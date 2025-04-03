@@ -137,3 +137,31 @@ select funcionEj3(5) as "Pelicula Seleccionada";
 la función muestre el número de películas con una nota dentro de dicho rango, 
 y las películas con una nota fuera de dicho rango.*/
 
+delimiter //
+create function funcionEj4(num1 int, num2 int) returns varchar(255) no sql
+begin
+declare resultado varchar(255);
+declare contRango int;
+declare contFueraRango int;
+
+set contRango = (select count(*)
+				from peliculas
+				where nota between num1 and num2);
+                
+set contFueraRango = (select count(*)
+				      from peliculas
+                      where nota not between num1 and num2);
+
+set resultado = concat("Dentro del rango: ",contRango, "; Fueran de rango: ", contFueraRango);
+
+return resultado;
+end//
+
+select funcionEj4(3,6);
+
+
+
+
+
+
+
